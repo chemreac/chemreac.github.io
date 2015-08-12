@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>chemreac.util.physchem &mdash; chemreac 0.3.0.git documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="chemreac 0.3.0.git documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> chemreac</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#building-from-source">Building from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#tests">Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../derivations.html">Derivations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../derivations.html#law-of-mass-action">Law of mass action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../derivations.html#diffusion-equation">Diffusion equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../derivations.html#laplace-operator">Laplace operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../derivations.html#jacobian-elements">Jacobian elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../derivations.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../derivations.html#finite-difference-scheme">Finite difference scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Modules Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../core.html">chemreac.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../integrate.html">chemreac.integrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../chemistry.html">chemreac.chemistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../util/index.html">chemreac.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/analytic_diffusion.html">Analytic diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/analytic_N_scaling.html">Analytic error scaling vs. number of bins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/aqueous_radiolysis.html">Aqueous radiolysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/auto_efield.html">Automatic electric field computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/const_surf_conc.html">Diffusion from constant concentration surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/decay.html">Two coupled decays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/equilibrium.html">Equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/four_species.html">Four species two reactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/steady_state_approx.html">Steady state approximation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev.html#coding-standards">Coding standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev.html#documentation-standard">Documentation standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev.html#unit-tests">Unit tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev.html#environment">Environment</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">chemreac</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>chemreac.util.physchem</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="https://github.com/bjodah/chemreac/blob/master/docs/_modules/chemreac/util/physchem.rst" class="fa fa-github"> Edit on GitHub</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for chemreac.util.physchem</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">..constants</span> <span class="kn">import</span> <span class="n">Boltzmann_constant</span><span class="p">,</span> <span class="n">elementary_charge</span>
+
+
+<div class="viewcode-block" id="electrical_mobility_from_D"><a class="viewcode-back" href="../../../util/physchem.html#chemreac.util.physchem.electrical_mobility_from_D">[docs]</a><span class="k">def</span> <span class="nf">electrical_mobility_from_D</span><span class="p">(</span><span class="n">Dcoeff</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">Temp</span><span class="p">,</span> <span class="n">kB</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">elem_chg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the electrical mobility through Einstein-Smoluchowski relation.</span>
+
+<span class="sd">    Paraneters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Dcoeff: float</span>
+<span class="sd">        Diffusion coefficient</span>
+<span class="sd">    charge: integer</span>
+<span class="sd">        charge of the species</span>
+<span class="sd">    Temp: float</span>
+<span class="sd">        Absolute temperature</span>
+<span class="sd">    kB: float (optional)</span>
+<span class="sd">        Boltzmann&#39;s constant. Defaults to value with units (which requires the</span>
+<span class="sd">        other parameters to have consistent units)</span>
+<span class="sd">    elem_chg: float (optional)</span>
+<span class="sd">        elementary charge. Defaults to value with units (which requires the</span>
+<span class="sd">        other parameters to have consistent units)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Electrical mobility (with units unless kB/elem_chg are overridden)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kB</span> <span class="o">=</span> <span class="n">Boltzmann_constant</span> <span class="k">if</span> <span class="n">kB</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">kB</span>
+    <span class="n">elem_chg</span> <span class="o">=</span> <span class="n">elementary_charge</span> <span class="k">if</span> <span class="n">elem_chg</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">elem_chg</span>
+    <span class="k">return</span> <span class="n">Dcoeff</span><span class="o">*</span><span class="n">charge</span><span class="o">*</span><span class="n">elem_chg</span><span class="o">/</span><span class="p">(</span><span class="n">kB</span><span class="o">*</span><span class="n">Temp</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Björn Dahlgren.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.3.0.git',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

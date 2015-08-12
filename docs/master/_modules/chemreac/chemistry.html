@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>chemreac.chemistry &mdash; chemreac 0.3.0.git documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="chemreac 0.3.0.git documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../index.html" class="fa fa-home"> chemreac</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#building-from-source">Building from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#tests">Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../derivations.html">Derivations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../derivations.html#law-of-mass-action">Law of mass action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../derivations.html#diffusion-equation">Diffusion equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../derivations.html#laplace-operator">Laplace operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../derivations.html#jacobian-elements">Jacobian elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../derivations.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../derivations.html#finite-difference-scheme">Finite difference scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../core.html">chemreac.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integrate.html">chemreac.integrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chemistry.html">chemreac.chemistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../util/index.html">chemreac.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/analytic_diffusion.html">Analytic diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/analytic_N_scaling.html">Analytic error scaling vs. number of bins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/aqueous_radiolysis.html">Aqueous radiolysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/auto_efield.html">Automatic electric field computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/const_surf_conc.html">Diffusion from constant concentration surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/decay.html">Two coupled decays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/equilibrium.html">Equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/four_species.html">Four species two reactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/steady_state_approx.html">Steady state approximation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dev.html#coding-standards">Coding standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev.html#documentation-standard">Documentation standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev.html#unit-tests">Unit tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev.html#environment">Environment</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">chemreac</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>chemreac.chemistry</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="https://github.com/bjodah/chemreac/blob/master/docs/_modules/chemreac/chemistry.rst" class="fa fa-github"> Edit on GitHub</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for chemreac.chemistry</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">chemreac.chemistry</span>
+<span class="sd">==================</span>
+
+<span class="sd">This module collects classes useful for describing substances,</span>
+<span class="sd">reactions and reaction systems. The classes have methods to help</span>
+<span class="sd">with consistent low-level conversion to numerical parameters of</span>
+<span class="sd">the model.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span><span class="p">,</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">total_ordering</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
+<span class="kn">import</span> <span class="nn">weakref</span>
+
+<span class="kn">import</span> <span class="nn">quantities</span> <span class="kn">as</span> <span class="nn">pq</span>
+
+<span class="kn">from</span> <span class="nn">chemreac</span> <span class="kn">import</span> <span class="n">ReactionDiffusion</span>
+<span class="kn">from</span> <span class="nn">chemreac.util.physchem</span> <span class="kn">import</span> <span class="n">electrical_mobility_from_D</span>
+
+<span class="c"># TODO: somewhere: add check for massconservation and charge conservation</span>
+
+<span class="n">dm</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">UnitQuantity</span><span class="p">(</span><span class="s">&#39;decimeter&#39;</span><span class="p">,</span>  <span class="n">pq</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">,</span>  <span class="n">symbol</span><span class="o">=</span><span class="s">&#39;dm&#39;</span><span class="p">)</span>
+<span class="n">molar</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">UnitQuantity</span><span class="p">(</span><span class="s">&#39;molar&#39;</span><span class="p">,</span>  <span class="n">pq</span><span class="o">.</span><span class="n">mole</span> <span class="o">/</span> <span class="n">dm</span> <span class="o">**</span> <span class="mi">3</span><span class="p">,</span>  <span class="n">symbol</span><span class="o">=</span><span class="s">&#39;M&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@total_ordering</span>
+<div class="viewcode-block" id="Substance"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.Substance">[docs]</a><span class="k">class</span> <span class="nc">Substance</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Substance class to represent a chemical speices.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ==========</span>
+<span class="sd">    name: string</span>
+<span class="sd">        unique string representation e.g. &quot;H2O&quot;, &quot;CNO-&quot;, &quot;OCN-&quot;</span>
+<span class="sd">    charge: integer</span>
+<span class="sd">        charge of substance</span>
+<span class="sd">    mass: float</span>
+<span class="sd">        molar mass (default None)</span>
+<span class="sd">    formula: e.g. periodictable.formulas.Formula instance</span>
+<span class="sd">        optional, if formula instance provides `mass` attribute it is</span>
+<span class="sd">        used as mass in the case mass=None</span>
+<span class="sd">    tex_name: string</span>
+<span class="sd">        optional, TeX formated string, e.g. &#39;$\mathrm{OH^{-}}$&#39;</span>
+<span class="sd">    multiplicity: integer</span>
+<span class="sd">        optional, 1 for singlet, 2 for doublet...</span>
+<span class="sd">    D: float (optional)</span>
+<span class="sd">        diffusion coefficent, for now: isothermal, isotropic and only</span>
+<span class="sd">        for one medium.  default: 0.0</span>
+<span class="sd">    **kwargs:</span>
+<span class="sd">        additional freely chosen attributes</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ==========</span>
+<span class="sd">    all_substances</span>
+<span class="sd">        dictionary (name, insatnce) of all Substance instances.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    ========</span>
+<span class="sd">    &gt;&gt;&gt; Substance(name=&#39;H2O&#39;, charge=0, tex_name=r&#39;$\mathrm{H_{2}O}$&#39;, pKa=14)</span>
+<span class="sd">    &lt;Substance &#39;H2O&#39;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; Substance.all_substances[&#39;H2O&#39;]</span>
+<span class="sd">    &lt;Substance &#39;H2O&#39;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; &#39;H2O&#39; in Substance.all_substances</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># weakref =&gt; If instance is deleted GC can kill it.</span>
+    <span class="c"># We manually keep track och instances in order to ensure unique names</span>
+    <span class="n">all_substances</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">WeakValueDictionary</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">charge</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">mass</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">tex_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">multiplicity</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">all_substances</span><span class="p">:</span>
+            <span class="n">colliding_occurance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">all_substances</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">colliding_occurance</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                    <span class="s">&#39;Substance name already exists: &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#39; id=&#39;</span> <span class="o">+</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">all_substances</span><span class="p">[</span><span class="n">name</span><span class="p">])))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">all_substances</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">charge</span> <span class="o">=</span> <span class="n">charge</span>
+        <span class="k">if</span> <span class="n">mass</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="s">&#39;mass&#39;</span><span class="p">):</span>
+            <span class="n">mass</span> <span class="o">=</span> <span class="n">formula</span><span class="o">.</span><span class="n">mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formula</span> <span class="o">=</span> <span class="n">formula</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tex_name</span> <span class="o">=</span> <span class="n">tex_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">multiplicity</span> <span class="o">=</span> <span class="n">multiplicity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">D</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s">&quot; &#39;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;&#39;&gt;&quot;</span>
+
+    <span class="c"># Thanks to total_ordering it is sufficient to specify eq and lt</span>
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Equality of Substance instances is solely determined from .name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># all_substances dictionary lookup in __init__ should</span>
+        <span class="c"># prevent collisions</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
+
+<div class="viewcode-block" id="Substance.get_mobility"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.Substance.get_mobility">[docs]</a>    <span class="k">def</span> <span class="nf">get_mobility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Temp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; See ``chemreac.util.physchem.electrical_mobility_from_D`` &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">electrical_mobility_from_D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">charge</span><span class="p">,</span> <span class="n">Temp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="mk_sn_dict_from_names"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.mk_sn_dict_from_names">[docs]</a><span class="k">def</span> <span class="nf">mk_sn_dict_from_names</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convenience function to generate a OrderedDict of Substance</span>
+<span class="sd">    instances from a sequence of names and corresponding sequences</span>
+<span class="sd">    of kwargs to Substance class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    names: sequence of strings</span>
+<span class="sd">        names of substances</span>
+<span class="sd">    **kwargs:</span>
+<span class="sd">        sequences of corresponding keyword arguments</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; mk_sn_dict_from_names(</span>
+<span class="sd">    ...     &#39;ABCD&#39;, D=[0.1, 0.2, 0.3, 0.4]) # doctest: +NORMALIZE_WHITESPACE</span>
+<span class="sd">    OrderedDict([(&#39;A&#39;, &lt;Substance &#39;A&#39;&gt;), (&#39;B&#39;, &lt;Substance &#39;B&#39;&gt;),</span>
+<span class="sd">    (&#39;C&#39;, &lt;Substance &#39;C&#39;&gt;), (&#39;D&#39;, &lt;Substance &#39;D&#39;&gt;)])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kwargs_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">kwargs_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="n">s</span><span class="p">,</span> <span class="n">Substance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs_list</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span>
+                        <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">)])</span>
+
+</div>
+<div class="viewcode-block" id="Reaction"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.Reaction">[docs]</a><span class="k">class</span> <span class="nc">Reaction</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reaction with kinetics governed by the law of mass-action.</span>
+<span class="sd">    Example:</span>
+
+<span class="sd">        A + R --&gt; A + P; r = k*A*R</span>
+
+<span class="sd">    Also supports</span>
+
+<span class="sd">        5*C1 + C2 --&gt; B; r = k*C1*C2</span>
+
+<span class="sd">    by specifying active reactants C1, C2 and inactive reaktants 4*C1.</span>
+
+<span class="sd">    reactants and products are dictionaries with substance names</span>
+<span class="sd">    as keys and positive integers giving their stoichiometric coeffecients</span>
+<span class="sd">    as values</span>
+
+<span class="sd">    rate constant i either given as k (T optional as validity info)</span>
+<span class="sd">    or as Ea and A for use in the Arrhenius equation</span>
+
+<span class="sd">    and ref contains optional information on origin of data.</span>
+
+<span class="sd">    along the same lines `name` is possible to use if the reaction</span>
+<span class="sd">    is known under a certain name, e.g. &quot;H2O2 auto-decomposition&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    active_reac: dict</span>
+<span class="sd">        dictionary mapping substance name (string) to stoichiometric</span>
+<span class="sd">        coefficient (integer) of reactant, these affect rate expression.</span>
+<span class="sd">    products: dict</span>
+<span class="sd">        dictionary mapping substance name (string) to stoichiometric</span>
+<span class="sd">        coefficient (integer)</span>
+<span class="sd">    inactv_reac: dict (optional)</span>
+<span class="sd">        Same as active_reac but does not affect rate expression.</span>
+<span class="sd">    k: float</span>
+<span class="sd">        rate coefficient</span>
+<span class="sd">    T: float</span>
+<span class="sd">        absolute temperature</span>
+<span class="sd">    Ea: float</span>
+<span class="sd">        activation energy</span>
+<span class="sd">    A: float</span>
+<span class="sd">        preexponential prefactor (Arrhenius type eq.)</span>
+<span class="sd">    ref: string (optional)</span>
+<span class="sd">        Reference key</span>
+<span class="sd">    name: string (optional)</span>
+<span class="sd">        Descriptive name of reaction</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">reactants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inactv_reac</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">active_reac</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">v</span>
+        <span class="k">return</span> <span class="n">d</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">active_reac</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">inactv_reac</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">Ea</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active_reac</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">active_reac</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">products</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">products</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inactv_reac</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">inactv_reac</span> <span class="ow">or</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">active_reac</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">T</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Ea</span> <span class="o">=</span> <span class="n">Ea</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="n">ref</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tex</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">equilibrium</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">names</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">tex</span><span class="p">:</span>
+            <span class="n">arrow</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39; $</span><span class="se">\\</span><span class="s">rightleftharpoons$ &#39;</span> <span class="k">if</span> <span class="n">equilibrium</span>
+                     <span class="k">else</span> <span class="s">&#39; $</span><span class="se">\\</span><span class="s">rightarrow$ &#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arrow</span> <span class="o">=</span> <span class="s">&#39; &lt;-&gt; &#39;</span> <span class="k">if</span> <span class="n">equilibrium</span> <span class="k">else</span> <span class="s">&#39; -&gt; &#39;</span>
+        <span class="n">active</span><span class="p">,</span> <span class="n">inactv</span><span class="p">,</span> <span class="n">prod</span> <span class="o">=</span> <span class="p">[[</span>
+            <span class="p">((</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">+</span><span class="s">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">names</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="n">k</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s">&#39;tex_name&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span> <span class="k">if</span> <span class="n">tex</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span>
+            <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">active_reac</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">inactv_reac</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">)]</span>
+        <span class="n">fmtstr</span> <span class="o">=</span> <span class="s">&quot;{}&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s">&quot; + ({})&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inactv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">&quot;{}&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">arrow</span> <span class="o">+</span> <span class="s">&quot;{}&quot;</span>
+        <span class="k">return</span> <span class="n">fmtstr</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot; + &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">active</span><span class="p">),</span>
+                             <span class="s">&quot; + &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inactv</span><span class="p">),</span>
+                             <span class="s">&quot; + &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prod</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">species_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+    <span class="k">def</span> <span class="nf">reactant_stoich_coeffs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species_names</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">species_names</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">product_stoich_coeffs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species_names</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">species_names</span><span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="ReactionSystem"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.ReactionSystem">[docs]</a><span class="k">class</span> <span class="nc">ReactionSystem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Collection of reactions forming a system (model).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    rxns: sequence</span>
+<span class="sd">         sequence of :py:class:`Reaction` instances</span>
+<span class="sd">    name: string (optional)</span>
+<span class="sd">         Name of ReactionSystem (e.g. model name / citation key)</span>
+<span class="sd">    substances: sequence (optional)</span>
+<span class="sd">         Sequence of Substance instances, will be used in doing</span>
+<span class="sd">         a sanity check and as default in method :meth:`to_ReactionDiffusion`</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    rxns</span>
+<span class="sd">        sequence of :class:`Reaction` instances</span>
+<span class="sd">    species_names</span>
+<span class="sd">        names of occurring species</span>
+<span class="sd">    k</span>
+<span class="sd">        rates for rxns</span>
+<span class="sd">    ns</span>
+<span class="sd">        number of species</span>
+<span class="sd">    nr</span>
+<span class="sd">        number of reactions</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rxns</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">substances</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">substances</span> <span class="o">=</span> <span class="n">substances</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rxns</span> <span class="o">=</span> <span class="n">rxns</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rxns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rxns</span>
+
+    <span class="nd">@rxns.setter</span>
+    <span class="k">def</span> <span class="nf">rxns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_do_sanity_check</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rxns</span> <span class="o">=</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">_do_sanity_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rxns</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Check for conservation of mass and charge. &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">substances</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">rxn</span> <span class="ow">in</span> <span class="n">rxns</span><span class="p">:</span>
+            <span class="n">net_chg</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">net_mass</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">reac</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">rxn</span><span class="o">.</span><span class="n">reactants</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">net_chg</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substances</span><span class="p">[</span><span class="n">reac</span><span class="p">]</span><span class="o">.</span><span class="n">charge</span>
+                <span class="n">net_mass</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substances</span><span class="p">[</span><span class="n">reac</span><span class="p">]</span><span class="o">.</span><span class="n">mass</span>
+            <span class="k">for</span> <span class="n">reac</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">rxn</span><span class="o">.</span><span class="n">products</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">net_chg</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substances</span><span class="p">[</span><span class="n">reac</span><span class="p">]</span><span class="o">.</span><span class="n">charge</span>
+                <span class="n">net_mass</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substances</span><span class="p">[</span><span class="n">reac</span><span class="p">]</span><span class="o">.</span><span class="n">mass</span>
+            <span class="k">assert</span> <span class="n">net_chg</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">net_mass</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.01</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_ReactionDiffusion</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">rd</span><span class="p">):</span>
+        <span class="n">rxns</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ri</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rd</span><span class="o">.</span><span class="n">nr</span><span class="p">):</span>
+            <span class="n">rxn</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">to_Reaction</span><span class="p">(</span><span class="n">ri</span><span class="p">)</span>
+            <span class="n">rxns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rxn</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="n">rxns</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ReactionSystem.to_ReactionDiffusion"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.ReactionSystem.to_ReactionDiffusion">[docs]</a>    <span class="k">def</span> <span class="nf">to_ReactionDiffusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">substances</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ordered_names</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a :class:`ReactionDiffusion` instance from ``self``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        substances: sequence of Substance instances</span>
+<span class="sd">            pass to override self.substances (optional)</span>
+<span class="sd">        ordered_names: sequence of names</span>
+<span class="sd">            pass to override self.ordered_names()</span>
+<span class="sd">        \*\*kwargs:</span>
+<span class="sd">            Keyword arguments passed on to :class:`ReactionDiffusion`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ord_names</span> <span class="o">=</span> <span class="n">ordered_names</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordered_names</span><span class="p">()</span>
+        <span class="n">substs</span> <span class="o">=</span> <span class="n">substances</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">substances</span>
+
+        <span class="k">def</span> <span class="nf">_kwargs_updater</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="n">substs</span><span class="p">[</span><span class="n">sn</span><span class="p">],</span> <span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">sn</span> <span class="ow">in</span> <span class="n">ord_names</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="n">substs</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                    <span class="p">[</span><span class="s">&#39;D&#39;</span><span class="p">,</span> <span class="s">&#39;mobility&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;tex_name&#39;</span><span class="p">],</span>
+                    <span class="p">[</span><span class="s">&#39;D&#39;</span><span class="p">,</span> <span class="s">&#39;mobility&#39;</span><span class="p">,</span> <span class="s">&#39;substance_names&#39;</span><span class="p">,</span>
+                     <span class="s">&#39;substance_tex_names&#39;</span><span class="p">]):</span>
+                <span class="n">_kwargs_updater</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ReactionDiffusion</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stoich_active</span><span class="p">(</span><span class="n">ordered_names</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stoich_prod</span><span class="p">(</span><span class="n">ordered_names</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span>
+            <span class="n">stoich_inactv</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stoich_inactv</span><span class="p">(</span><span class="n">ordered_names</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">species_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="nb">tuple</span><span class="p">(</span><span class="n">rxn</span><span class="o">.</span><span class="n">species_names</span> <span class="k">for</span> <span class="n">rxn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rxns</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">ordered_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">species_names</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_repeating_indices_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">ordered_names</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">rxn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rxns</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">si</span><span class="p">,</span> <span class="n">sn</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ordered_names</span><span class="p">):</span>
+                <span class="n">l</span> <span class="o">+=</span> <span class="p">[</span><span class="n">si</span><span class="p">]</span><span class="o">*</span><span class="nb">getattr</span><span class="p">(</span><span class="n">rxn</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">))[</span><span class="n">sn</span><span class="p">]</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">stoich_active</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ordered_names</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_repeating_indices_list</span><span class="p">(</span>
+            <span class="s">&#39;active_reac&#39;</span><span class="p">,</span> <span class="n">ordered_names</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordered_names</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">stoich_prod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ordered_names</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_repeating_indices_list</span><span class="p">(</span>
+            <span class="s">&#39;products&#39;</span><span class="p">,</span> <span class="n">ordered_names</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordered_names</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">stoich_inactv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ordered_names</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_repeating_indices_list</span><span class="p">(</span>
+            <span class="s">&#39;inactv_reac&#39;</span><span class="p">,</span> <span class="n">ordered_names</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordered_names</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="ReactionSystem.k"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.ReactionSystem.k">[docs]</a>    <span class="k">def</span> <span class="nf">k</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; List of rate constants &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">rxn</span><span class="o">.</span><span class="n">k</span> <span class="k">for</span> <span class="n">rxn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rxns</span><span class="p">]</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="ReactionSystem.ns"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.ReactionSystem.ns">[docs]</a>    <span class="k">def</span> <span class="nf">ns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Number of species &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">species_names</span><span class="p">)</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="ReactionSystem.nr"><a class="viewcode-back" href="../../chemistry.html#chemreac.chemistry.ReactionSystem.nr">[docs]</a>    <span class="k">def</span> <span class="nf">nr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Number of reactions &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rxns</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Björn Dahlgren.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3.0.git',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

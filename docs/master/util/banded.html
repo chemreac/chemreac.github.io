@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>chemreac.util.banded &mdash; chemreac 0.3.0.git documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="chemreac 0.3.0.git documentation" href="../index.html"/>
+        <link rel="up" title="chemreac.util" href="index.html"/>
+        <link rel="next" title="chemreac.util.grid" href="grid.html"/>
+        <link rel="prev" title="chemreac.util.analysis" href="analysis.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> chemreac</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#building-from-source">Building from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#tests">Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../derivations.html">Derivations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../derivations.html#law-of-mass-action">Law of mass action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../derivations.html#diffusion-equation">Diffusion equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../derivations.html#laplace-operator">Laplace operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../derivations.html#jacobian-elements">Jacobian elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../derivations.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../derivations.html#finite-difference-scheme">Finite difference scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Modules Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../core.html">chemreac.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integrate.html">chemreac.integrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chemistry.html">chemreac.chemistry</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">chemreac.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/analytic_diffusion.html">Analytic diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/analytic_N_scaling.html">Analytic error scaling vs. number of bins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/aqueous_radiolysis.html">Aqueous radiolysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/auto_efield.html">Automatic electric field computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/const_surf_conc.html">Diffusion from constant concentration surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/decay.html">Two coupled decays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/equilibrium.html">Equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/four_species.html">Four species two reactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/steady_state_approx.html">Steady state approximation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dev.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev.html#coding-standards">Coding standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev.html#documentation-standard">Documentation standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev.html#unit-tests">Unit tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev.html#environment">Environment</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">chemreac</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../modules.html">Modules Reference</a> &raquo;</li>
+      
+          <li><a href="index.html">chemreac.util</a> &raquo;</li>
+      
+    <li>chemreac.util.banded</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="https://github.com/bjodah/chemreac/blob/master/docs/util/banded.rst" class="fa fa-github"> Edit on GitHub</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <span class="target" id="module-chemreac.util.banded"></span><div class="section" id="chemreac-util-banded">
+<h1>chemreac.util.banded<a class="headerlink" href="#chemreac-util-banded" title="Permalink to this headline">¶</a></h1>
+<p>this module contains functions to deal with banded matrices.</p>
+<dl class="function">
+<dt id="chemreac.util.banded.get_banded">
+<tt class="descclassname">chemreac.util.banded.</tt><tt class="descname">get_banded</tt><big>(</big><em>A</em>, <em>n</em>, <em>N</em>, <em>order='C'</em>, <em>padded=False</em><big>)</big><a class="reference internal" href="../_modules/chemreac/util/banded.html#get_banded"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemreac.util.banded.get_banded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns a dense matrix (n*N)*(n*N) into a banded matrix
+including the diagonal and n super-diagonals and n sub-diagonals</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>A: 2-dimensional square matrix</strong></p>
+<p><strong>n: int</strong></p>
+<blockquote>
+<div><p>sub-block dimension</p>
+</div></blockquote>
+<p><strong>N: int</strong></p>
+<blockquote>
+<div><p>number of super-blocks</p>
+</div></blockquote>
+<p><strong>order: {&#8216;C&#8217;, &#8216;F&#8217;}, optional</strong></p>
+<blockquote>
+<div><p>C- or Fortran-contiguous</p>
+</div></blockquote>
+<p><strong>padded: bool, optional</strong></p>
+<blockquote>
+<div><p>default: False, if True: A is padded with n rows along the top</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>ValueError on mismatch of A.shape and n*N</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="chemreac.util.banded.get_jac_row_from_banded">
+<tt class="descclassname">chemreac.util.banded.</tt><tt class="descname">get_jac_row_from_banded</tt><big>(</big><em>J</em>, <em>rows</em>, <em>n</em><big>)</big><a class="reference internal" href="../_modules/chemreac/util/banded.html#get_jac_row_from_banded"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemreac.util.banded.get_jac_row_from_banded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts a rows from a banded matrix J</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>J: 2-dimensional array</strong></p>
+<blockquote>
+<div><p>Source matrix with banded storage.</p>
+</div></blockquote>
+<p><strong>rows: sequence</strong></p>
+<blockquote>
+<div><p>indices of rows to extract</p>
+</div></blockquote>
+<p><strong>n: integer</strong></p>
+<blockquote class="last">
+<div><p>row length</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="grid.html" class="btn btn-neutral float-right" title="chemreac.util.grid">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="analysis.html" class="btn btn-neutral" title="chemreac.util.analysis"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Björn Dahlgren.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0.git',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
